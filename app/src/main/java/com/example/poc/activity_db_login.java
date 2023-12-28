@@ -14,7 +14,7 @@ public class activity_db_login extends AppCompatActivity {
 
     private EditText editTextUsername, editTextPassword;
     private TextView textViewMessage;
-    private SQLiteDatabase database;
+    private SQLiteDatabase database; //database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
