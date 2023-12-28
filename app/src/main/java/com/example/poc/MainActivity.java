@@ -1,9 +1,12 @@
 package com.example.poc;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -11,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -45,8 +50,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //internet
+        Button btnCheckConnection = findViewById(R.id.btnInternet);
+        btnCheckConnection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Verifica a ligação à internet
+                if (isConnectedToInternet()) {
+                    // Apresenta um popup que informa se está conectado
+                    showToast("Conectado à Internet");
+                } else {
+                    // Apresenta um popup que informa que não está conectado
+                    showToast("Sem Internet");
+                }
+            }
+        });
     }
 
+
+    //camara
     private void startCameraIntent() {
         Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraLauncher.launch(iCamera);
@@ -97,4 +120,23 @@ public class MainActivity extends AppCompatActivity {
         img.compress(Bitmap.CompressFormat.JPEG, 100,imgoutput);
         return imgoutput.toByteArray();
     }
+
+    //Internet
+    private boolean isConnectedToInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager != null) {
+            NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnected();
+        }
+
+        return false;
+    }
+
+    // Função para mostrar um Toast
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }
