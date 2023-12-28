@@ -34,6 +34,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity_db_login"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".DataBaseTestActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".Home"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity_db_update"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

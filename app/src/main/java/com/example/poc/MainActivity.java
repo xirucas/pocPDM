@@ -14,15 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.poc.R;
 
 import java.io.ByteArrayOutputStream;
 
