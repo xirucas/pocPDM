@@ -40,7 +40,7 @@ public class activity_db_login extends AppCompatActivity {
                 User user = dbHelper.checkUser(username, encryptedPassword);
                 if (user != null) {
                     // Login successful, redirect to another activity
-                    Intent intent = new Intent(activity_db_login.this, Home.class);
+                    Intent intent = new Intent(activity_db_login.this, MainActivity.class);
                     intent.putExtra("name", user.getName());
                     startActivity(intent);
                 } else {

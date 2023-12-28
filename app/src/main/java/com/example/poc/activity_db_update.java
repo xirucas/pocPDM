@@ -59,7 +59,7 @@ public class activity_db_update extends AppCompatActivity {
             });
 
             buttonCancel.setOnClickListener(view -> {
-                Intent intent = new Intent(activity_db_update.this, Home.class);
+                Intent intent = new Intent(activity_db_update.this, MainActivity.class);
                 intent.putExtra("name", getIntent().getStringExtra("title"));
                 startActivity(intent);
                 finish();

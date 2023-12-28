@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,7 +21,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.poc.databinding.ActivityMainBinding;
+
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,43 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String CAMERA_PERMISSION = Manifest.permission.CAMERA;
 
     ImageView imgCamera;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView (R.layout.activity_main);
-
-        imgCamera = findViewById(R.id.imgCamera);
-        Button btnCamera = findViewById(R.id.btnCamera);
-        btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkSelfPermission(CAMERA_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{CAMERA_PERMISSION}, REQUEST_CAMERA_PERMISSION);
-                } else {
-                    startCameraIntent();
-                }
-            }
-        });
-
-        //internet
-        Button btnCheckConnection = findViewById(R.id.btnInternet);
-        btnCheckConnection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Verifica a ligação à internet
-                if (isConnectedToInternet()) {
-                    // Apresenta um popup que informa se está conectado
-                    showToast("Conectado à Internet");
-                } else {
-                    // Apresenta um popup que informa que não está conectado
-                    showToast("Sem Internet");
-                }
-            }
-        });
-    }
-
-
     //camara
     private void startCameraIntent() {
         Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -134,5 +101,90 @@ public class MainActivity extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    @NonNull ActivityMainBinding binding;
+    ListAdapter listAdapter;
+    ArrayList<ListData> dataArrayList = new ArrayList<>();
+
+    ArrayList<User> users = new ArrayList<>();
+    ListData listData;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView (R.layout.activity_main);
+
+        imgCamera = findViewById(R.id.imgCamera);
+        Button btnCamera = findViewById(R.id.btnCamera);
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkSelfPermission(CAMERA_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{CAMERA_PERMISSION}, REQUEST_CAMERA_PERMISSION);
+                } else {
+                    startCameraIntent();
+                }
+            }
+        });
+
+        //internet
+        Button btnCheckConnection = findViewById(R.id.btnInternet);
+        btnCheckConnection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Verifica a ligação à internet
+                if (isConnectedToInternet()) {
+                    // Apresenta um popup que informa se está conectado
+                    showToast("Conectado à Internet");
+                } else {
+                    // Apresenta um popup que informa que não está conectado
+                    showToast("Sem Internet");
+                }
+            }
+        });
+        
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot()); // Set the root view of the binding object
+
+        // Get the username from the intent and display the welcome message
+        String name = getIntent().getStringExtra("name");
+        String welcomeMessage = "Bem vindo, " + name;
+
+        // Access the TextView using the binding object
+        TextView textViewWelcome = binding.Hello;
+
+        // Set the text to the TextView
+        textViewWelcome.setText(welcomeMessage);
+
+        setContentView(binding.getRoot());
+
+        try (DataBaseHelper dataBaseHelper = new DataBaseHelper(this)) {
+            users = dataBaseHelper.readUsers();
+
+            for (int i = 0; i < users.size(); i++) {
+                listData = new ListData(users.get(i).getId(), users.get(i).getName(), users.get(i).getUsername());
+                dataArrayList.add(listData);
+            }
+
+            listAdapter = new ListAdapter(this, dataArrayList, this);
+            binding.listUsers.setAdapter(listAdapter);
+            binding.listUsers.setClickable(true);
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Error reading users", Toast.LENGTH_SHORT);
+            toast.show();
+            users.add(new User(-1, "error", "error", "error"));
+        }
+    }
+
+    public void goToLogin(View view) {
+        finish();
+        Intent intent = new Intent(MainActivity.this, activity_db_login.class);
+        startActivity(intent);
+    }
+
+    public String getSessionName() {
+        return getIntent().getStringExtra("name");
+    }
+    
 
 }

@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<ListData> {
 
-    Home binding;
+    MainActivity binding;
 
-    public ListAdapter(@NonNull Context context, ArrayList<ListData> dataArrayList, Home binding) {
+    public ListAdapter(@NonNull Context context, ArrayList<ListData> dataArrayList, MainActivity binding) {
         super(context, R.layout.list_item, dataArrayList);
         this.binding = binding;
     }
@@ -57,7 +57,7 @@ public class ListAdapter extends ArrayAdapter<ListData> {
                 } else {
                     Toast.makeText(getContext(), "Error deleting user", Toast.LENGTH_SHORT).show();
                 }
-                Intent intent = new Intent(getContext(), Home.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.putExtra("name", binding.getSessionName());
                 getContext().startActivity(intent);
                 binding.finish();

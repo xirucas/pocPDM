@@ -4,7 +4,6 @@
     android:id="@+id/swipe_layout3"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:layout_weight="1"
     app:draggedItem="@id/drag_item"
     app:leftItem="@id/left_view"
     app:rightItem="@id/right_view"
