@@ -30,36 +30,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:text="Verify internet"/>
-
-        <TextView
-            android:id="@+id/Hello"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Bem vindo, Xavier"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
         <Button
+            android:id="@+id/btnLocalBD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorSecondary"
-            android:layout_gravity="center_vertical"
-            android:onClick="goToLogin"
-            android:text="@string/logout" />
+            android:layout_marginTop="21dp"
+            android:text="Local Data Base"/>
+
+
+
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listUsers"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16sp"
-        android:layout_weight="1"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/list_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,7 @@ public class DataBaseTestActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Success = " + success, Toast.LENGTH_SHORT).show();
 
                     if (success){
-                        Intent intent = new Intent(getApplicationContext(), activity_db_login.class);
+                        Intent intent = new Intent(getApplicationContext(), ListaBD.class);
                         startActivity(intent);
                     }
                 }

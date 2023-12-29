@@ -17,11 +17,9 @@ import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<ListData> {
 
-    MainActivity binding;
 
-    public ListAdapter(@NonNull Context context, ArrayList<ListData> dataArrayList, MainActivity binding) {
+    public ListAdapter(@NonNull Context context, ArrayList<ListData> dataArrayList) {
         super(context, R.layout.list_item, dataArrayList);
-        this.binding = binding;
     }
 
     @NonNull
@@ -43,11 +41,9 @@ public class ListAdapter extends ArrayAdapter<ListData> {
 
         edit.setOnClickListener(view1 -> {
             Intent intent = new Intent(getContext(), activity_db_update.class);
-            intent.putExtra("title", binding.getSessionName());
             intent.putExtra("name", listData.name);
             intent.putExtra("id", listData.id);
             getContext().startActivity(intent);
-            binding.finish();
         });
 
         delete.setOnClickListener(view2 -> {
@@ -58,9 +54,7 @@ public class ListAdapter extends ArrayAdapter<ListData> {
                     Toast.makeText(getContext(), "Error deleting user", Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.putExtra("name", binding.getSessionName());
                 getContext().startActivity(intent);
-                binding.finish();
             } catch (Exception e) {
                 Toast.makeText(getContext(), "Error deleting user", Toast.LENGTH_SHORT).show();
             }
