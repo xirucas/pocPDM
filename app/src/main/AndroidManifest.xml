@@ -13,6 +13,7 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -40,6 +41,13 @@
         <activity
             android:name=".DataBaseTestActivity"
             android:exported="true" />
+        <activity
+            android:name=".webservices"
+            android:exported="true" />
+        <activity android:name=".UserDetailActivity"
+            android:exported="false"/>
+        <activity android:name=".EditUserActivity"
+            android:exported="false"/>
         <activity
             android:name=".activity_db_update"
             android:exported="false" />

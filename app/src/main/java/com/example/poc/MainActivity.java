@@ -73,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //webServices
+        Button btnWebServices = findViewById(R.id.btnWebServices);
+        btnWebServices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), webservices.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //camara
