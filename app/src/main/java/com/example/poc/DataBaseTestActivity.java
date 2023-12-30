@@ -1,5 +1,7 @@
 package com.example.poc;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -66,11 +68,23 @@ public class DataBaseTestActivity extends AppCompatActivity {
                 }
 
             }
+
+        });
+
+        Button buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
 
     }
 
     public void backToLogin(View view) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
+
+
 }

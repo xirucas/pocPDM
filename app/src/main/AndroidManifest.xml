@@ -30,6 +30,7 @@
             android:name=".ListaBD"
             android:exported="false" />
         <activity
+
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -38,19 +39,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".DataBaseTestActivity"
             android:exported="true" />
+
         <activity
             android:name=".webservices"
             android:exported="true" />
+
         <activity android:name=".UserDetailActivity"
             android:exported="false"/>
+
         <activity android:name=".EditUserActivity"
             android:exported="false"/>
+
         <activity
             android:name=".activity_db_update"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -4,35 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome" />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password" />
-
-    <Button
-        android:id="@+id/buttonSaveChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salvar Alterações" />
+    android:layout_margin="32dp"
+    tools:context=".EditUserActivity">
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voltar" />
+        android:backgroundTint="@color/ic_launcher_background"
+        android:text="@string/Back"
+        android:textColor="@color/white"
+        android:layout_marginBottom="32dp"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_corners_round"
+        android:backgroundTint="@color/material_dynamic_neutral_variant95"
+        android:hint="Nome"
+        android:paddingStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_corners_round"
+        android:backgroundTint="@color/material_dynamic_neutral_variant95"
+        android:hint="Email"
+        android:paddingStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_corners_round"
+        android:backgroundTint="@color/material_dynamic_neutral_variant95"
+        android:hint="Password"
+        android:paddingStart="20dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/buttonSaveChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ic_launcher_background"
+        android:text="Salvar Alterações"
+        android:layout_gravity="center"/>
+
 </LinearLayout>

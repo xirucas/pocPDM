@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Krillin\'s Wife</string>
-    <string name="Welcome">Welcome to Krillin\'s Wife</string>
+    <string name="app_name">POC</string>
+    <string name="Welcome">Welcome to our POC :)</string>
     <string name="CreateAccount">New? Create a new account</string>
     <string name="SignIn">Sign In</string>
     <string name="Register">Register</string>
@@ -13,4 +13,6 @@
     <string name="backWord">Back</string>
     <string name="Update">Save</string>
     <string name="invalid_login">Invalid username or password</string>
+    <string name="create_user">Create User</string>
+    <string name="see_users">See Users</string>
 </resources>

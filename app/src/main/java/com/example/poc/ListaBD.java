@@ -25,7 +25,7 @@ public class ListaBD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_bd);
 
-        Button btnCreate = findViewById(R.id.btnCreate);
+        Button btnCreate = findViewById(R.id.buttonCreate);
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
